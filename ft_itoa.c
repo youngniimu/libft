@@ -6,7 +6,7 @@
 /*   By: thalme <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/17 12:19:38 by thalme            #+#    #+#             */
-/*   Updated: 2019/10/28 09:44:24 by thalme           ###   ########.fr       */
+/*   Updated: 2019/10/31 09:06:32 by thalme           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ char	*ft_itoa(int nb)
 
 	i = nb;
 	count = ft_len(i);
-	ret = (char*)malloc(sizeof(char) * count + 1);
-	if (ret == NULL)
+	if (!(ret = (char*)malloc(sizeof(char) * count + 1)))
 		return (NULL);
 	c = count;
 	count = 0;

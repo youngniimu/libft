@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thalme <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/17 12:45:44 by thalme            #+#    #+#             */
-/*   Updated: 2019/10/31 09:08:05 by thalme           ###   ########.fr       */
+/*   Created: 2019/11/01 10:14:37 by thalme            #+#    #+#             */
+/*   Updated: 2019/11/01 10:22:17 by thalme           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_toupper(int c)
+char	*ft_strndup(const char *s1, size_t n)
 {
-	if (c >= 97 && c <= 122)
-		c = c - 32;
-	return (c);
+	size_t	i;
+	char	*ret;
+
+	if (!(ret = (char*)malloc(sizeof(char) * n + 1)))
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0' && i < n)
+	{
+		ret[i] = s1[i];
+		i++;
+	}
+	ret[i] = '\0';
+	return (ret);
 }
