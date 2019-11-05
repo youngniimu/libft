@@ -6,13 +6,13 @@
 /*   By: thalme <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 09:35:05 by thalme            #+#    #+#             */
-/*   Updated: 2019/11/01 10:52:32 by thalme           ###   ########.fr       */
+/*   Updated: 2019/11/04 14:16:11 by thalme           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	**ft_copy(char **ret, char const *s, char c, size_t words)
+static char		**ft_copy(char **ret, char const *s, char c, size_t words)
 {
 	size_t	i;
 	size_t	j;
@@ -34,7 +34,7 @@ static char	**ft_copy(char **ret, char const *s, char c, size_t words)
 	return (ret);
 }
 
-static char	**ft_allocatemem(char **ret, char const *s, char c, size_t words)
+static char		**ft_allocatemem(char **ret, char const *s, char c, size_t w)
 {
 	size_t	i;
 	size_t	j;
@@ -42,7 +42,7 @@ static char	**ft_allocatemem(char **ret, char const *s, char c, size_t words)
 
 	j = 0;
 	i = 0;
-	while (s[i] && j < words)
+	while (s[i] && j < w)
 	{
 		letters = 0;
 		while (s[i] == c && s[i] != '\0')
@@ -82,7 +82,7 @@ static size_t	ft_words(char const *s, char c)
 	return (words);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**ret;
 	size_t	words;
