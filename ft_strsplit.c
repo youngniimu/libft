@@ -6,7 +6,7 @@
 /*   By: thalme <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/23 09:35:05 by thalme            #+#    #+#             */
-/*   Updated: 2019/11/04 14:16:11 by thalme           ###   ########.fr       */
+/*   Updated: 2019/11/06 16:10:48 by thalme           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,9 @@ static char		**ft_allocatemem(char **ret, char const *s, char c, size_t w)
 
 	j = 0;
 	i = 0;
+	if (s[i] == '\0')
+		if (!(ret[j] = (char*)malloc(sizeof(char))))
+			return (NULL);
 	while (s[i] && j < w)
 	{
 		letters = 0;
@@ -62,21 +65,16 @@ static size_t	ft_words(char const *s, char c)
 {
 	size_t	words;
 	size_t	i;
-	size_t	end;
 
 	i = 0;
 	words = 0;
-	end = ft_strlen(s);
-	end--;
-	while (s[end] == c && end > 0)
-		end--;
-	while (i < end)
+	while (s[i] != '\0')
 	{
-		while (s[i] == c && i <= end)
+		while (s[i] == c && s[i])
 			i++;
 		if (s[i] != c && s[i] != '\0')
 			words++;
-		while (s[i] != c && i <= end)
+		while (s[i] != c && s[i])
 			i++;
 	}
 	return (words);
@@ -87,13 +85,11 @@ char			**ft_strsplit(char const *s, char c)
 	char	**ret;
 	size_t	words;
 
-	if (s[0] == '\0')
-		return (NULL);
 	words = ft_words(s, c);
 	if (!(ret = (char**)malloc(sizeof(char*) * (words + 1))))
 		return (NULL);
 	if (!(ret = ft_allocatemem(ret, s, c, words)))
-		return (ret);
+		return (NULL);
 	ret = ft_copy(ret, s, c, words);
 	return (ret);
 }

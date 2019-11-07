@@ -6,7 +6,7 @@
 /*   By: thalme <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/29 10:21:58 by thalme            #+#    #+#             */
-/*   Updated: 2019/10/29 18:57:14 by thalme           ###   ########.fr       */
+/*   Updated: 2019/11/06 16:10:11 by thalme           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,18 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 
 	if (!(new = (t_list*)malloc(sizeof(t_list))))
 		return (NULL);
+	new->next = NULL;
 	if (content == NULL)
 	{
 		new->content = NULL;
 		new->content_size = 0;
-		new->next = NULL;
 	}
 	else
 	{
-		new->content = (void*)content;
+		if (!(new->content = malloc(sizeof(content_size))))
+			return (NULL);
+		ft_memcpy(new->content, content, content_size);
 		new->content_size = content_size;
-		new->next = NULL;
 	}
 	return (new);
 }
