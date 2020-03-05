@@ -6,7 +6,7 @@
 /*   By: thalme <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:32:33 by thalme            #+#    #+#             */
-/*   Updated: 2019/11/01 10:23:03 by thalme           ###   ########.fr       */
+/*   Updated: 2020/03/05 15:36:58 by thalme           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+#include "get_next_line.h"
 
 typedef	struct		s_list
 {
@@ -37,6 +38,7 @@ int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_abs(int i);
+
 
 char				**ft_strsplit(char const *s, char c);
 char				*ft_strsub(char const *s, unsigned int start, size_t len);
@@ -87,6 +89,7 @@ void 				ft_vswap(void * a, void * b, size_t len);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
 size_t				ft_strlen(const char *str);
 size_t				ft_wordcount(const char *s, char c);
+
 
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
